@@ -1,0 +1,16 @@
+<app-navbar (categoryChangedEvent)="onCategoryChanged($event)"></app-navbar>
+
+<app-thread
+  [state]="State.Create"
+  (createEvent)="createThread($event)"
+></app-thread>
+
+<div id="form-bottom-border"></div>
+
+<div>
+  <app-thread
+    *ngFor="let thread of threads"
+    [threadData]="thread"
+    (deleteEvent)="deleteThread($event)"
+  ></app-thread>
+</div>

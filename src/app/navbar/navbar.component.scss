@@ -1,0 +1,123 @@
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(1, 82, 82);
+  margin: -8px -8px 25px -8px;
+  padding: 1rem;
+  height: 3rem;
+}
+
+#container-img {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  object-fit: cover;
+  width: 30%;
+  height: 3.5rem;
+  margin: -5px;
+  padding: 5px;
+}
+
+.icon-groupomania {
+  filter: sepia();
+}
+
+img {
+  width: 70%;
+  vertical-align: middle;
+}
+
+#hamburger-menu {
+  color: rgb(1, 82, 82);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: Auto;
+  cursor: pointer;
+}
+
+#menu-category {
+  color: rgb(247, 241, 231);
+  background-color: rgb(167, 132, 17);
+  text-align: center;
+  vertical-align: middle;
+  width: 8rem;
+  position: absolute;
+  right: 240px;
+  border-radius: 20px;
+  padding: 7px 4px 7px 4px;
+}
+
+#list-category {
+  background-color: rgb(247, 241, 231);
+  border-radius: 20px;
+  color: rgb(1, 82, 82);
+  list-style: none;
+  line-height: 30px;
+  position: absolute;
+  top: 23px;
+  right: 75px;
+  width: auto;
+}
+
+select-style {
+  background-color: rgb(247, 241, 231);
+}
+
+#list-menu {
+  background-color: rgb(247, 241, 231);
+  border-radius: 10px;
+  border: solid 4px rgb(1, 82, 82);
+  padding: 10px;
+  list-style: none;
+  line-height: 30px;
+  position: absolute;
+  top: 50px;
+  right: 0px;
+}
+
+.navbar-icon-menu {
+  color: rgb(167, 132, 17);
+  font-size: 40px;
+  margin-left: 20px;
+}
+
+#bars-icon-menu {
+  position: absolute;
+  right: 0;
+  z-index: 0;
+  margin-right: 15px;
+  margin-top: -25px;
+}
+
+#times-icon-menu {
+  position: relative;
+  right: 0;
+  z-index: 1;
+}
+
+select {
+  width: 150px;
+  padding: 5px 35px 5px 5px;
+  margin-top: 2px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 800px) {
+  #container-img {
+    width: 55%;
+  }
+
+  #content-comment {
+    font-size: 20px;
+  }
+
+  #list-category {
+    width: auto;
+    font-size: 14px;
+  }
+}

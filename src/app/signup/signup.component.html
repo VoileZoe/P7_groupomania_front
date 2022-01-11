@@ -1,0 +1,94 @@
+<p id="container-img">
+  <img
+    class="icon-groupomania"
+    src="../../assets/icon-groupomania-white.png"
+    alt="icon Groupomania"
+  />
+</p>
+<form [formGroup]="signupForm" (ngSubmit)="signup()">
+  <p id="signup-title">Inscription</p>
+  <p>
+    <input
+      type="text"
+      placeholder="pseudo"
+      formControlName="username"
+      class="signup-input"
+    />
+  </p>
+  <div
+    *ngIf="submitted && signupForm.controls['username'].errors"
+    class="invalid-feedback"
+  >
+    <div
+      *ngIf="signupForm.controls['username'].errors['required']"
+      class="error-message"
+    >
+      Un pseudo est requis !
+    </div>
+  </div>
+  <p>
+    <input
+      type="email"
+      placeholder="email"
+      formControlName="email"
+      class="signup-input"
+      pattern="^[a-zA-Z0-9-\.]+@[a-zA-Z0-9-\.]+\.[a-zA-Z]{2,12}$"
+    />
+  </p>
+  <div
+    *ngIf="submitted && signupForm.controls['email'].errors"
+    class="invalid-feedback"
+  >
+    <div
+      *ngIf="signupForm.controls['email'].errors['required']"
+      class="error-message"
+    >
+      Email requis !
+    </div>
+    <div
+      *ngIf="signupForm.controls['email'].errors['pattern']"
+      class="error-message"
+    >
+      Votre email est invalide !
+    </div>
+  </div>
+
+  <p>
+    <input
+      type="password"
+      placeholder="mot de passe"
+      formControlName="password"
+      class="signup-input"
+    />
+  </p>
+  <div
+    *ngIf="submitted && signupForm.controls['password'].errors"
+    class="invalid-feedback"
+  >
+    <div
+      *ngIf="signupForm.controls['password'].errors['required']"
+      class="error-message"
+    >
+      Mot de passe requis !
+    </div>
+    <div
+      *ngIf="signupForm.controls['password'].errors['minlength']"
+      class="error-message"
+    >
+      Votre mot de passe doit contenir 6 caractères !
+    </div>
+  </div>
+  <p>
+    <input
+      type="password"
+      placeholder="valider le mot de passe"
+      formControlName="passwordVerif"
+      class="signup-input"
+    />
+  </p>
+  <p>{{ errorMessage }}</p>
+  <button type="submit">s'inscrire !</button>
+  <p id="login" [routerLink]="['/login']">
+    Déjà un compte ? <a>se connecter</a>
+  </p>
+</form>

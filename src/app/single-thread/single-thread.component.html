@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<button id="back" (click)="back()">
+  <fa-icon [icon]="faArrowLeft" class="back-icon"></fa-icon>Retour
+</button>
+
+<p *ngIf="!isThreadAvailable">Ce thread n'est pas disponible</p>
+
+<app-thread
+  *ngIf="thread"
+  (deleteEvent)="deleteThread($event)"
+  [threadData]="thread"
+></app-thread>
+<app-comment
+  *ngIf="isThreadAvailable"
+  [state]="State.Create"
+  (createEvent)="createComment($event)"
+></app-comment>
+<app-comment
+  *ngFor="let comment of comments"
+  [commentData]="comment"
+  (deleteEvent)="deleteComment($event)"
+></app-comment>

@@ -1,0 +1,22 @@
+#back {
+  font-size: 16px;
+  color: rgb(167, 132, 17);
+  background-color: rgb(247, 241, 231);
+  text-align: center;
+  width: auto;
+  border-radius: 20px;
+  border: solid 3px rgb(167, 132, 17);
+  padding: 7px 10px 7px 10px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.back-icon {
+  margin-right: 5px;
+}
+
+@media only screen and (max-width: 800px) {
+  #back {
+    margin-bottom: 20px;
+  }
+}

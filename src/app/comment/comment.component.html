@@ -1,0 +1,120 @@
+<!-- form comment create -->
+
+<div *ngIf="state === State.Create" id="form-comment">
+  <form
+    id="form-container"
+    [formGroup]="commentForm"
+    (ngSubmit)="onCreateButton()"
+  >
+    <div id="comment-container-content">
+      <!-- <select id="list-type" formControlName="contentType">
+        <option
+          *ngFor="let contentType of contentTypes; trackBy: identifyContentType"
+          value="{{ contentType.id }}"
+        >
+          {{ contentType.type }}
+        </option>
+      </select> -->
+
+      <p>
+        <input
+          type="text"
+          placeholder="Commenter..."
+          class="form-post"
+          formControlName="contentText"
+        />
+      </p>
+      <div id="form-container-button">
+        <button id="form-button">partager</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- comment read -->
+
+<div *ngIf="state === State.Read" id="comment">
+  <div id="comment-container">
+    <p id="pseudo">{{ user?.name }} :</p>
+    <div id="icon-container">
+      <p *ngIf="userLikes?.like == 1" class="thread-icon" (click)="unlike()">
+        {{ likes?.likes }}
+        <fa-icon [icon]="faThumbsUp" id="like"></fa-icon>
+      </p>
+      <p
+        *ngIf="userLikes?.like == 0 || userLikes?.like == -1"
+        class="thread-icon"
+        (click)="like()"
+      >
+        {{ likes?.likes }}
+        <fa-icon [icon]="faThumbsUp" id="unlike"></fa-icon>
+      </p>
+      <p *ngIf="userLikes?.like == -1" class="thread-icon" (click)="unlike()">
+        {{ likes?.dislikes }}
+        <fa-icon [icon]="faThumbsDown" id="dislike"></fa-icon>
+      </p>
+      <p
+        *ngIf="userLikes?.like == 0 || userLikes?.like == 1"
+        class="thread-icon"
+        (click)="dislike()"
+      >
+        {{ likes?.dislikes }}
+        <fa-icon [icon]="faThumbsDown" id="undislike"></fa-icon>
+      </p>
+
+      <p class="pen-trash-icon" *ngIf="isOwner()" (click)="onUpdateButton()">
+        <fa-icon [icon]="faPen"></fa-icon>
+      </p>
+      <p class="pen-trash-icon" *ngIf="isOwner()" (click)="onDeleteButton()">
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </p>
+      <p (click)="onModerateButton()" *ngIf="isAdmin()" class="pen-trash-icon">
+        <fa-icon [icon]="faBan"></fa-icon>
+      </p>
+    </div>
+  </div>
+  <div id="container-content">
+    <p id="content-comment">{{ commentData.content_text }}</p>
+    <div id="comment-date">
+      <p *ngIf="!commentData.date_update" id="date-creation" class="date">
+        {{ commentData.date_creation | date: "dd/MM/yyyy à hh:mm" }}
+      </p>
+      <p *ngIf="commentData.date_update" id="date-update" class="date">
+        modifié le {{ commentData.date_update | date: "dd/MM/yyyy à hh:mm" }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- form comment update -->
+
+<div *ngIf="state === State.Update" id="form-comment">
+  <form id="form-container" [formGroup]="commentForm" (ngSubmit)="update()">
+    <div id="comment-container-content">
+      <!-- <select id="list-type" formControlName="contentType">
+        <option
+          *ngFor="let contentType of contentTypes; trackBy: identifyContentType"
+          value="{{ contentType.id }}"
+        >
+          {{ contentType.type }}
+        </option>
+      </select> -->
+
+      <p>
+        <input
+          type="text"
+          placeholder="Commenter..."
+          class="form-post"
+          formControlName="contentText"
+        />
+      </p>
+
+      <div id="form-container-button-update">
+        <button type="button" (click)="cancelUpdate()" id="form-button-return">
+          annuler
+        </button>
+        <button id="form-button-update">modifier</button>
+      </div>
+    </div>
+  </form>
+</div>

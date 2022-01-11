@@ -1,0 +1,451 @@
+// form creation thread style
+
+#form-container {
+  background-color: rgb(247, 241, 231);
+  color: rgb(1, 82, 82);
+  width: 60%;
+  max-width: 45rem;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 40px;
+  border: 4px solid rgb(167, 132, 17);
+}
+
+#pseudo {
+  margin: 5px 0 5px 20px;
+}
+
+#form-header {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  font-size: 13px;
+  width: 100%;
+}
+
+#input-title {
+  font-size: xx-large;
+  margin: 5px 5px 5px 20px;
+  background-color: rgb(247, 241, 231);
+  width: 95%;
+  min-height: 2rem;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+}
+
+#form-likes {
+  font-size: xx-large;
+  margin: 5px 5px 5px 20px;
+}
+
+#form-container-content {
+  padding: 0;
+  margin: 10px 20px 10px 20px;
+  border-top: solid 3px rgb(167, 132, 17);
+  border-bottom: solid 3px rgb(167, 132, 17);
+  border-radius: 0px;
+  width: auto;
+  min-height: 9rem;
+}
+
+#upload {
+  margin-right: 5px;
+}
+
+#file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+#file + label {
+  font-size: 16px;
+  color: rgb(247, 241, 231);
+  padding: 10px;
+  background-color: rgb(1, 82, 82);
+  display: inline-block;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#file:focus + label,
+#file + label:hover {
+  background-color: teal;
+}
+
+#form-type-category {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#list-category {
+  background-color: rgb(247, 241, 231);
+  border-radius: 20px;
+  border: solid 2px rgb(167, 132, 17);
+  color: rgb(1, 82, 82);
+  list-style: none;
+  text-align: center;
+  width: 7rem;
+  height: 2rem;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+select-style {
+  background-color: rgb(247, 241, 231);
+}
+
+#list-type {
+  background-color: rgb(247, 241, 231);
+  border-radius: 20px;
+  border: solid 2px rgb(167, 132, 17);
+  color: rgb(1, 82, 82);
+  list-style: none;
+  text-align: center;
+  width: 10rem;
+  height: 2rem;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.form-post {
+  font-size: x-large;
+  background-color: rgb(247, 241, 231);
+  width: 95%;
+  min-height: 5rem;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+}
+
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(1, 82, 82);
+}
+
+input:focus {
+  outline: 2px solid rgb(1, 82, 82);
+}
+
+#form-container-button {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#form-button {
+  font-size: 16px;
+  color: rgb(247, 241, 231);
+  background-color: rgb(167, 132, 17);
+  text-align: center;
+  width: auto;
+  border-radius: 20px;
+  border: solid 2px rgb(167, 132, 17);
+  margin: 5px 20px 5px 0;
+  padding: 7px 10px 7px 10px;
+  cursor: pointer;
+}
+
+// thread style
+
+#thread-container {
+  background-color: rgb(247, 241, 231);
+  color: rgb(1, 82, 82);
+  width: 60%;
+  max-width: 45rem;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 40px;
+}
+
+#pseudo {
+  margin: 5px 0 5px 20px;
+}
+
+#thread-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+  font-size: 13px;
+  width: 100%;
+}
+
+#thread-title {
+  font-size: xx-large;
+  margin: 5px 5px 5px 20px;
+}
+
+#icon-container {
+  display: flex;
+  cursor: pointer;
+}
+
+#like {
+  color: rgb(23, 138, 48);
+  font-size: 20px;
+}
+
+#unlike {
+  color: rgb(1, 82, 82);
+  font-size: 20px;
+}
+
+#dislike {
+  color: rgb(160, 10, 35);
+  font-size: 20px;
+}
+
+#undislike {
+  color: rgb(1, 82, 82);
+  font-size: 20px;
+}
+
+.thread-icon {
+  align-self: center;
+  font-size: 15px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+#trash-icon {
+  width: 10%;
+  margin-left: 5px;
+}
+
+#thread-content {
+  padding: 0;
+  margin: 10px 20px 10px 20px;
+  border-top: solid 3px rgb(167, 132, 17);
+  border-bottom: solid 3px rgb(167, 132, 17);
+  border-radius: 0px;
+  width: auto;
+}
+
+#thread-category {
+  text-align: center;
+  width: 5rem;
+  margin-top: 10px;
+  border-radius: 20px;
+  padding: 4px;
+  border: solid 2px rgb(167, 132, 17);
+}
+
+#container-img {
+  overflow: hidden;
+  object-fit: cover;
+  width: 50%;
+  margin: auto;
+}
+
+#thread-post {
+  font-size: x-large;
+  width: 100%;
+}
+
+#thread-dates {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-size: 13px;
+  width: 100%;
+}
+
+#thread-date-post {
+  width: auto;
+  margin: 0;
+}
+
+#thread-date-update {
+  width: auto;
+  margin-left: 5px;
+  margin: 0;
+}
+
+#thread-comment {
+  margin-left: 20px;
+}
+
+#thread-container-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#thread-button {
+  font-size: 16px;
+  color: whitesmoke;
+  background-color: rgb(167, 132, 17);
+  text-align: center;
+  width: auto;
+  border-radius: 20px;
+  border: solid 2px rgb(167, 132, 17);
+  margin: 5px 20px 5px 0;
+  padding: 7px 10px 7px 10px;
+  cursor: pointer;
+}
+
+// stye form update
+
+#form-container {
+  background-color: rgb(247, 241, 231);
+  color: rgb(1, 82, 82);
+  width: 60%;
+  max-width: 45rem;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 40px;
+}
+
+#pseudo {
+  margin: 5px 0 5px 20px;
+}
+
+#form-header {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  font-size: 13px;
+  width: 100%;
+}
+
+#input-title {
+  font-size: xx-large;
+  margin: 5px 5px 5px 20px;
+  background-color: rgb(247, 241, 231);
+  width: 95%;
+  min-height: 2rem;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+}
+
+#form-likes {
+  font-size: xx-large;
+  margin: 5px 5px 5px 20px;
+}
+
+#form-container-content {
+  padding: 0;
+  margin: 10px 20px 10px 20px;
+  border-top: solid 3px rgb(167, 132, 17);
+  border-bottom: solid 3px rgb(167, 132, 17);
+  border-radius: 0px;
+  width: auto;
+  min-height: 9rem;
+}
+
+#form-type-category {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+#list-category {
+  background-color: rgb(247, 241, 231);
+  border-radius: 20px;
+  border: solid 2px rgb(167, 132, 17);
+  color: rgb(1, 82, 82);
+  list-style: none;
+  text-align: center;
+  width: 7rem;
+  height: 2rem;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+select-style {
+  background-color: rgb(247, 241, 231);
+}
+
+#list-type {
+  background-color: rgb(247, 241, 231);
+  border-radius: 20px;
+  border: solid 2px rgb(167, 132, 17);
+  color: rgb(1, 82, 82);
+  list-style: none;
+  text-align: center;
+  width: 10rem;
+  height: 2rem;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.form-post {
+  font-size: x-large;
+  background-color: rgb(247, 241, 231);
+  width: 95%;
+  min-height: 5rem;
+  border: none;
+  border-radius: 20px;
+  padding-left: 20px;
+}
+
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(1, 82, 82);
+}
+
+input:focus {
+  outline: 2px solid rgb(1, 82, 82);
+}
+
+#form-container-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#form-button {
+  font-size: 16px;
+  color: whitesmoke;
+  background-color: rgb(167, 132, 17);
+  text-align: center;
+  width: auto;
+  border-radius: 20px;
+  border: solid 2px rgb(167, 132, 17);
+  margin: 5px 20px 5px 0;
+  padding: 7px 10px 7px 10px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  #form-container {
+    width: 80%;
+  }
+  #thread-container {
+    width: 80%;
+  }
+
+  #container-img {
+    width: 100%;
+  }
+
+  #input-title {
+    font-size: 25px;
+    width: 85%;
+  }
+
+  #form-post {
+  }
+
+  #thread-header {
+    flex-direction: column;
+  }
+
+  #thread-title {
+    font-size: 20px;
+  }
+}

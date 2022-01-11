@@ -1,0 +1,51 @@
+<div id="navbar">
+  <p id="container-img">
+    <img
+      class="icon-groupomania"
+      src="../../assets/icon-groupomania-white.png"
+      alt="icon Groupomania"
+    />
+  </p>
+
+  <div id="hamburger-menu" [formGroup]="categoryForm">
+    <select
+      *ngIf="isNewsfeed()"
+      formControlName="category"
+      id="list-category"
+      (change)="onChange()"
+    >
+      <option value="-1">toutes catégories</option>
+      <option
+        *ngFor="let category of categories; trackBy: identifyCategory"
+        value="{{ category.id }}"
+      >
+        {{ category.name }}
+      </option>
+    </select>
+
+    <ul *ngIf="displayMenu" id="list-menu">
+      <a (click)="onSettingsButton()"><li>modifier mes informations</li></a>
+      <a (click)="onDeleteAccountButton()"><li>supprimer mon compte</li></a>
+      <a (click)="onLogoutButton()"><li>déconnexion</li></a>
+    </ul>
+
+    <a
+      ><fa-icon
+        (click)="toggleMenu()"
+        *ngIf="!displayMenu"
+        [icon]="faBars"
+        class="navbar-icon-menu"
+        id="bars-icon-menu"
+      ></fa-icon
+    ></a>
+    <a
+      ><fa-icon
+        (click)="toggleMenu()"
+        *ngIf="displayMenu"
+        [icon]="faTimes"
+        class="navbar-icon-menu"
+        id="times-icon-menu"
+      ></fa-icon
+    ></a>
+  </div>
+</div>

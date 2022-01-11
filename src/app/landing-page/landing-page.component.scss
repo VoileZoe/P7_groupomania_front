@@ -1,0 +1,86 @@
+#container-landing {
+  background-color: rgb(1, 82, 82);
+  border-radius: 100px;
+  width: 70%;
+  margin: auto;
+  margin-top: 110px;
+  height: 40rem;
+}
+
+#container-landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#slogan {
+  text-align: center;
+  color: rgb(182, 143, 17);
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#container-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  object-fit: cover;
+  width: 90%;
+  height: 7rem;
+  margin: 3rem 0 0 0;
+  padding: 5px;
+}
+
+img {
+  width: 40%;
+  vertical-align: middle;
+}
+
+.icon-groupomania {
+  filter: sepia();
+}
+
+#login {
+  font-size: 25px;
+  color: rgb(247, 241, 231);
+  background-color: rgb(167, 132, 17);
+  text-align: center;
+  width: auto;
+  border-radius: 50px;
+  border: solid 2px rgb(167, 132, 17);
+  margin: auto;
+  margin-top: 3rem;
+  padding: 7px 10px 7px 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 380px;
+  &:hover {
+    border: solid 4px teal;
+  }
+  &:active {
+    background-color: rgba(195, 154, 20, 0.842);
+  }
+}
+
+#signup {
+  font-size: 25px;
+  color: rgb(1, 82, 82);
+  background-color: rgb(247, 241, 231);
+  text-align: center;
+  width: auto;
+  border-radius: 50px;
+  border: solid 2px rgb(247, 241, 231);
+  margin: auto;
+  margin-top: 2rem;
+  padding: 7px 10px 7px 10px;
+  position: relative;
+  top: 80px;
+  cursor: pointer;
+  &:hover {
+    border: solid 4px teal;
+  }
+  &:active {
+    background-color: rgba(248, 234, 209, 0.842);
+  }
+}

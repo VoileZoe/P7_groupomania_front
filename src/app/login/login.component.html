@@ -1,0 +1,29 @@
+<p id="container-img">
+  <img
+    class="icon-groupomania"
+    src="../../assets/icon-groupomania-white.png"
+    alt="icon Groupomania"
+  />
+</p>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <p id="signup-title">se connecter</p>
+  <p>
+    <input
+      type="email"
+      placeholder="email"
+      formControlName="email"
+      class="login-input"
+    />
+  </p>
+  <p>
+    <input
+      type="password"
+      placeholder="mot de passe"
+      formControlName="password"
+      class="login-input"
+    />
+  </p>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  <button type="submit">se connecter !</button>
+  <p id="login" [routerLink]="['/signup']">Pas de compte ? <a>s'inscrire</a></p>
+</form>

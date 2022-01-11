@@ -1,0 +1,60 @@
+<p id="container-img">
+  <img
+    class="icon-groupomania"
+    src="../../assets/icon-groupomania-white.png"
+    alt="icon Groupomania"
+  />
+</p>
+<form [formGroup]="userForm" (ngSubmit)="updateUser()">
+  <button id="back" (click)="back()">
+    <fa-icon [icon]="faArrowLeft" class="back-icon"></fa-icon>Retour
+  </button>
+
+  <p id="signup-title">Modifier mes informations</p>
+
+  <div id="container-settings">
+    <div id="container-user-info">
+      <p class="info">Pseudo</p>
+      <p class="info">Email</p>
+      <p class="info">Mot de passe</p>
+    </div>
+
+    <div id="container-new-info">
+      <p>
+        <input
+          type="text"
+          placeholder="pseudo"
+          formControlName="username"
+          class="signup-input"
+        />
+      </p>
+      <p>
+        <input
+          type="email"
+          placeholder="email"
+          formControlName="email"
+          class="signup-input"
+        />
+      </p>
+      <p>
+        <input
+          type="password"
+          placeholder="nouveau mot de passe"
+          formControlName="newPassword"
+          class="signup-input"
+        />
+      </p>
+      <p>
+        <input
+          type="password"
+          placeholder="valider le mot de passe"
+          formControlName="newPasswordVerif"
+          class="signup-input"
+        />
+      </p>
+    </div>
+  </div>
+
+  <p>{{ errorMessage }}</p>
+  <button>valider les modifications !</button>
+</form>

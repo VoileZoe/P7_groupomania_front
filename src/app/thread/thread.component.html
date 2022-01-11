@@ -1,0 +1,266 @@
+<!-- form thread create -->
+
+<form
+  *ngIf="state === State.Create"
+  id="form-container"
+  [formGroup]="threadForm"
+  (ngSubmit)="onCreateButton()"
+>
+  <div id="form-header">
+    <p>
+      <input
+        type="text"
+        placeholder="Titre du thread"
+        formControlName="title"
+        id="input-title"
+      />
+    </p>
+  </div>
+  <div id="form-container-content">
+    <div id="form-type-category">
+      <select id="list-category" formControlName="category">
+        <option
+          *ngFor="let category of categories; trackBy: identifyCategory"
+          value="{{ category.id }}"
+        >
+          {{ category.name }}
+        </option>
+      </select>
+
+      <select id="list-type" formControlName="contentType">
+        <option
+          *ngFor="let contentType of contentTypes; trackBy: identifyContentType"
+          value="{{ contentType.id }}"
+        >
+          {{ contentType.type }}
+        </option>
+      </select>
+    </div>
+    <p>
+      <!-- contentText -->
+      <input
+        *ngIf="currentType == 1"
+        type="text"
+        placeholder="Contenu de mon thread..."
+        formControlName="contentTextText"
+        class="form-post"
+      />
+      <input
+        *ngIf="currentType == 2"
+        type="file"
+        id="file"
+        accept="image/*"
+        (change)="uploadFile($event)"
+      /><label *ngIf="currentType == 2" for="file"
+        ><fa-icon [icon]="faUpload" id="upload"></fa-icon>Choisir une
+        image</label
+      >
+      <input
+        *ngIf="currentType == 3"
+        type="text"
+        placeholder="Lien YouTube..."
+        class="form-post"
+        formControlName="contentTextYoutube"
+      />
+      <!-- contentText -->
+    </p>
+  </div>
+  <div id="form-container-button">
+    <button id="form-button">partager</button>
+  </div>
+</form>
+
+<!-- thread read -->
+
+<div *ngIf="state === State.Read" id="thread-container">
+  <p id="pseudo">{{ user?.name }} :</p>
+  <div id="thread-header">
+    <p id="thread-title">{{ threadData.title }}</p>
+    <div id="icon-container">
+      <p *ngIf="userLikes?.like == 1" class="thread-icon" (click)="unlike()">
+        {{ likes?.likes }}
+        <fa-icon [icon]="faThumbsUp" id="like"></fa-icon>
+      </p>
+      <p
+        *ngIf="userLikes?.like == 0 || userLikes?.like == -1"
+        class="thread-icon"
+        (click)="like()"
+      >
+        {{ likes?.likes }}
+        <fa-icon [icon]="faThumbsUp" id="unlike"></fa-icon>
+      </p>
+      <p *ngIf="userLikes?.like == -1" class="thread-icon" (click)="unlike()">
+        {{ likes?.dislikes }}
+        <fa-icon [icon]="faThumbsDown" id="dislike"></fa-icon>
+      </p>
+      <p
+        *ngIf="userLikes?.like == 0 || userLikes?.like == 1"
+        class="thread-icon"
+        (click)="dislike()"
+      >
+        {{ likes?.dislikes }}
+        <fa-icon [icon]="faThumbsDown" id="undislike"></fa-icon>
+      </p>
+
+      <p>
+        <fa-icon
+          (click)="onUpdateButton()"
+          *ngIf="isOwner()"
+          [icon]="faPen"
+          class="thread-icon"
+        ></fa-icon>
+      </p>
+      <p>
+        <fa-icon
+          (click)="onDeleteButton()"
+          *ngIf="isOwner()"
+          [icon]="faTrash"
+          class="thread-icon"
+        ></fa-icon>
+      </p>
+      <p>
+        <fa-icon
+          (click)="onModerateButton()"
+          *ngIf="isAdmin()"
+          [icon]="faBan"
+          class="thread-icon"
+        ></fa-icon>
+      </p>
+    </div>
+  </div>
+  <div id="thread-content">
+    <p id="thread-category">
+      {{ getCategoryById(threadData.category_id!)?.name }}
+    </p>
+    <!-- content -->
+    <!-- text -->
+    <p
+      *ngIf="
+        getContentTypeById(threadData.content?.content_type_id!)?.type ==
+        'texte'
+      "
+      id="thread-post"
+    >
+      {{ threadData.content?.content_text }}
+    </p>
+    <!-- text -->
+    <!-- image -->
+    <div id="container-img">
+      <img
+        *ngIf="
+          getContentTypeById(threadData.content?.content_type_id!)?.type ==
+          'image'
+        "
+        id="thread-post"
+        src="{{ threadData.content?.content_text }}"
+        alt="contenu du post"
+      />
+    </div>
+    <!-- image -->
+    <!-- youtube -->
+    <iframe
+      *ngIf="
+        getContentTypeById(threadData.content?.content_type_id!)?.type ==
+        'youtube'
+      "
+      width="500"
+      height="200"
+      src="{{ threadData.content?.content_text! }}"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <!-- youtube -->
+    <!-- end content -->
+    <div id="thread-dates">
+      <p *ngIf="!threadData.content?.date_update" id="thread-date-post">
+        {{ threadData.content?.date_creation | date: "dd/MM/yyyy à hh:mm" }}
+      </p>
+      <p *ngIf="threadData.content?.date_update" id="thread-date-update">
+        modifié le
+        {{ threadData.content?.date_update | date: "dd/MM/yyyy à hh:mm" }}
+      </p>
+    </div>
+  </div>
+  <p id="thread-comment">{{ commentCount || 0 }} commentaire(s)</p>
+  <div *ngIf="isNewsfeed()" id="thread-container-button">
+    <button (click)="onThreadDetail()" id="thread-button">
+      voir les commentaires
+    </button>
+  </div>
+</div>
+
+<!-- form thread update -->
+
+<form
+  *ngIf="state === State.Update"
+  id="form-container"
+  [formGroup]="threadForm"
+  (ngSubmit)="update()"
+>
+  <div id="form-header">
+    <p>
+      <input
+        type="text"
+        placeholder="Titre du thread"
+        id="input-title"
+        formControlName="title"
+      />
+    </p>
+  </div>
+  <div id="form-container-content">
+    <div id="form-type-category">
+      <select id="list-category" formControlName="category">
+        <option
+          *ngFor="let category of categories; trackBy: identifyCategory"
+          value="{{ category.id }}"
+        >
+          {{ category.name }}
+        </option>
+      </select>
+
+      <select id="list-type" formControlName="contentType">
+        <option
+          *ngFor="let contentType of contentTypes; trackBy: identifyContentType"
+          value="{{ contentType.id }}"
+        >
+          {{ contentType.type }}
+        </option>
+      </select>
+    </div>
+    <p>
+      <!-- contentText -->
+      <input
+        *ngIf="currentType == 1"
+        type="text"
+        placeholder="Contenu de mon thread..."
+        formControlName="contentTextText"
+        class="form-post"
+      />
+      <input
+        *ngIf="currentType == 2"
+        type="file"
+        id="file"
+        accept="image/*"
+        (change)="uploadFile($event)"
+      />
+      <input
+        *ngIf="currentType == 3"
+        type="text"
+        placeholder="Lien YouTube..."
+        class="form-post"
+        formControlName="contentTextYoutube"
+      />
+      <!-- contentText -->
+    </p>
+  </div>
+  <div id="form-container-button">
+    <button id="form-button">modifier</button>
+  </div>
+  <div id="form-container-button">
+    <button type="button" (click)="cancelUpdate()" id="form-button">
+      annuler
+    </button>
+  </div>
+</form>
