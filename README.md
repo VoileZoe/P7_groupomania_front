@@ -4,7 +4,7 @@
 
 - Install NodeJS and Angular
 
-- Clone the frontend: `git clone https://github.com/OpenClassrooms-Student-Center/Web-Developer-P6.git`
+- Clone the frontend: `git clone https://github.com/VoileZoe/P7_groupomania_front.git`
 
 - Frontend requirements: `npm install`
 

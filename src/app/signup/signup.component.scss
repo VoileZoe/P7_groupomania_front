@@ -85,3 +85,18 @@ button {
   text-decoration: underline;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 800px) {
+  #container-img {
+    width: 60%;
+  }
+
+  #signup-title {
+    font-size: 40px;
+  }
+
+  .signup-input {
+    width: 99%;
+    padding-left: 15px;
+  }
+}
